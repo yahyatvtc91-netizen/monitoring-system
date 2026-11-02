@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>نظام توزيع المراقبات</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="identity.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>نظام المراقبات</h1>
+      <p>المؤسسة العامة للتدريب التقني والمهني<br>الكلية التقنية التطبيقية للبنين بالرياض</p>
+    </div>
+    <div class="status"><span class="releaseBadge">الإصدار ٤ — الهوية المؤسسية ٢</span><span id="saveState">محفوظ محليًا</span><span id="termLabel">فصل غير محدد</span></div>
+    <div class="headerTools"><button type="button" id="identityAlerts" class="iconButton" title="التحقق والإشعارات" aria-label="فتح التحقق والإشعارات"><span id="identityAlertCount"></span></button><button type="button" id="identitySettings" class="iconButton" title="إعدادات الأيام والفترات" aria-label="فتح إعدادات الأيام والفترات"></button><span class="userAvatar" title="يحيى أحمد حكمي" aria-label="يحيى أحمد حكمي">يح</span></div>
+  </header>
+
+  <div class="appLayout">
+  <nav id="tabs" class="tabs">
+    <div class="navLabel">القائمة الرئيسية</div>
+    <button data-page="guide" class="active">الدليل</button>
+    <button data-page="home">الرئيسية</button>
+    <button data-page="periods">الأيام والفترات</button>
+    <button data-page="trainers">المدربون</button>
+    <button data-page="rooms">القاعات</button>
+    <button data-page="availability">تفريغ الفترات</button>
+    <button data-page="builder">بناء جدول الاختبارات</button>
+    <button data-page="schedule">توزيع المراقبات والقاعات</button>
+    <button data-page="reports">التقارير والطباعة</button>
+    <button data-page="announcement">إعلان جدول الاختبار للمتدربين</button>
+    <button data-page="audit">التحقق</button>
+  </nav>
+
+  <main>
+    <section id="page-guide" class="page active">
+      <div class="card guide"><h2>دليل نظام توزيع المراقبات</h2>
+        <p>يعمل البرنامج محليًا دون إنترنت. تُحفظ البيانات في المتصفح على هذا الجهاز؛ قبل الانتقال إلى جهاز آخر صدّر نسخة العمل واستوردها هناك. لا تفتح نسختين مختلفتين وتعدّلهما بالتوازي.</p>
+        <ol>
+          <li><strong>البدء:</strong> من الرئيسية استورد ملف SS01 بصيغة CSV أو XLSX. تُستخرج أسماء المدربين وأرقامهم الوظيفية وأقسامهم والقاعات النظرية دون تكرار. لا تُحسب شعب العملي والتعاوني وعن بُعد والذاتي في الشعب المؤهلة أو التحقق. راجع الأرقام الوظيفية والقاعات بعد الاستيراد.</li>
+          <li><strong>الاختبارات:</strong> من الرئيسية يمكن اختيار عدة ملفات CSV/XLSX معًا. يقرأ التطبيق الورقة الأولى من كل ملف Excel، ويعرض عدد الشعب المضافة والمكررة وغير المطابقة لكل ملف. عند تعارض موعد شعبة، يوقف العملية قبل إضافة أي ملف. يمكنك أيضًا بناء الجدول يدويًا من SS01.</li>
+          <li><strong>التوافر:</strong> X لليوم كله أو لفترة محددة يعني عدم توافر المدرب. في الأيام والفترات أدخل التواريخ الهجرية بصيغة ١٤٤٨/٠٨/٢٢، وفعّل الأسابيع والأيام المطلوبة. تُحسب تواريخ الأسابيع من الجدول المستورد وتُفعّل أيام الاختبارات وفتراتها، ويمكن مراجعتها هنا.</li>
+          <li><strong>القاعات:</strong> راجع قائمة القاعات ثم اضغط «إسناد القاعات آليًا» في الجدول. يستنتج البرنامج مبنى القسم من قاعات SS01 الأكثر ظهورًا لذلك القسم، ويجمع شعب المدرب في مبنى واحد قدر الإمكان؛ إن نفدت القاعات ينتقل لمبنى آخر. يصلح القاعات غير المعروفة والتكرار في الفترة نفسها.</li>
+          <li><strong>المراقبون:</strong> شغّل التوزيع الآلي. العدالة في إجمالي المراقبات بين المدربين النشطين هي الأولوية، ثم يُفضّل قسم المقرر عند تقارب الأعداد. لإعادة التوزيع العادل اضغط «إعادة تعيين المراقبين» أولًا؛ يحذف الإسناد في الصفوف غير المثبتة فقط. المدرب الذي تضعه غير نشط أو تفرغه يُزال من الإسنادات المتعارضة فورًا مع بقاء الخانة شاغرة إلى أن تعيد توزيعها. راجع «التحقق» قبل الاعتماد؛ يمكن استثناء أي خطأ أو تحذير ثم إلغاء الاستثناء.</li>
+          <li><strong>الطباعة:</strong> من التقارير اختر مدربًا أو اطبع الجميع. تفتح نافذة طباعة مستقلة، كل مدرب في صفحة. تعرض القاعة المعروفة برمزها الصحيح؛ أما القاعة غير الصالحة فتظهر «غير محددة» حتى يُعاد إسنادها. اختر «حفظ كملف PDF» من نافذة المتصفح.</li>
+          <li><strong>إعلان المتدربين:</strong> اكتب الفصل التدريبي في الحقل المخصص، ثم اطبع جميع الأيام أو اختر تاريخًا لطباعة يوم واحد. اليوم والتاريخ يظهران في أعمدة الجدول. تظهر الشعب المؤهلة فقط، ويُشار إلى القاعات غير المسندة قبل النشر.</li>
+          <li><strong>بوابة المدربين:</strong> صدّر CSV من التقارير وارفعه إلى Google Sheets الخاصة بك؛ تُرفق في الحزمة ملفات Google Apps Script. انشر صفحة القراءة وفق الإرشادات. المدرب يبحث برقمه الوظيفي. هذه خطوة نشر/تحديث عبر الإنترنت، وليست مزامنة تلقائية من قاعدة المتصفح المحلية.</li>
+          <li><strong>النسخ الاحتياطي:</strong> اسم نسخة JSON يبدأ برمز الفصل من SS01 ثم تاريخ ووقت التصدير. إذا غاب الرمز أو اختلف بين السجلات، راجع SS01 قبل التصدير. تهيئة فصل جديد تمسح بيانات الفصل على هذا الجهاز بعد تنزيل نسخة احتياطية.</li>
+        </ol>
+      </div>
+    </section>
+    <section id="page-home" class="page">
+      <div class="hero card">
+        <div><h2>لوحة التشغيل</h2><p>استورد البيانات</p></div>
+        <button id="resetBtn" class="danger">تهيئة فصل جديد</button>
+      </div>
+      <div class="grid metrics" id="metrics"></div>
+      <div id="identityDashboard" class="identityDashboard" aria-label="الملخص البياني"></div>
+      <div class="grid two">
+        <article class="card">
+          <h3>1. استيراد تقرير SS01</h3>
+          <p>يدعم CSV وXLSX.</p>
+          <label class="fileButton">اختيار ملف<input id="ss01File" type="file" accept=".csv,.xlsx"></label>
+          <div id="ss01Info" class="info"></div>
+        </article>
+        <article class="card">
+          <h3>2. استيراد جدول الاختبارات</h3>
+          <p>يمكن اختيار عدة ملفات CSV أو Excel دفعة واحدة. تُفحص الملفات قبل إضافتها، ويظهر ملخص لكل ملف.</p>
+          <label class="fileButton secondary">اختيار ملفات الاختبارات<input id="examFile" type="file" accept=".csv,.xlsx" multiple></label>
+          <div id="examInfo" class="info"></div>
+          <div id="examImportResult" class="importResult" role="status" aria-live="polite"></div>
+        </article>
+        <article class="card">
+          <h3>3. نقل العمل بين الأجهزة</h3>
+          <div class="actions"><button id="backupBtn">تصدير نسخة العمل</button><label class="fileButton light">استيراد نسخة<input id="restoreFile" type="file" accept=".json"></label></div>
+          <p class="hint">صدّر النسخة قبل مغادرة الجهاز، ثم استوردها على الجهاز الآخر.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="page-builder" class="page">
+      <div class="sectionHead"><div><h2>بناء جدول الاختبارات من SS01</h2><p>اختر الأسبوع واليوم؛ يظهر تاريخهما تلقائيًا. عند اختيار رمز المقرر تُعرض الشعب مباشرةً.</p></div></div>
+      <div class="card"><div class="filters builderFilters">
+        <label>الأسبوع <select id="buildWeek"></select></label>
+        <label>اليوم <select id="buildDay"></select></label>
+        <label>التاريخ الهجري <select id="buildDate" dir="ltr"></select></label>
+        <label>الفترة <select id="buildPeriod"></select></label>
+        <label>رمز المقرر <select id="buildCode"></select></label>
+        <button id="buildAddBtn" class="primary">إضافة الشعب المحددة</button>
+      </div><p id="buildInfo" class="info"></p></div>
+      <div class="tableWrap"><table id="buildTable"><thead><tr><th><input id="buildSelectAll" type="checkbox" title="تحديد الكل"></th><th>مدرب المقرر</th><th>الرقم المرجعي</th><th>المقرر</th><th>القسم</th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="page-trainers" class="page">
+      <div class="sectionHead"><div><h2>أسماء المدربين</h2><p>X في عمود «نشط» تعني استبعاد المدرب بالكامل. علامة السماح باختبار المقرر غير محددة افتراضيًا، وتُطبق فقط على المدرب المعني.</p></div><button id="addTrainerBtn">إضافة مدرب</button></div>
+      <div class="filters"><input id="trainerSearch" type="search" placeholder="بحث باسم المدرب" aria-label="بحث باسم المدرب"></div>
+      <div class="tableWrap"><table id="trainersTable"><colgroup><col style="width:12%"><col style="width:24%"><col style="width:18%"><col style="width:9%"><col style="width:8%"><col style="width:15%"><col style="width:8%"><col style="width:6%"></colgroup><thead><tr><th>الرقم الوظيفي</th><th>الاسم</th><th>القسم</th><th>نشط</th><th>الحد الأعلى</th><th>لا مانع من المراقبة في فترة اختبار مقرره</th><th>المصدر</th><th></th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="page-availability" class="page">
+      <div class="sectionHead"><div><h2>تفريغ الفترات</h2><p>الخانة الفارغة = متاح، وX = غير متاح. ثبّت المدرب من القائمة إذا أردت إبقاء تفريغه عند إعادة التعيين.</p></div><button id="resetAvailabilityBtn">إعادة تعيين التفريغ عدا المثبت</button></div>
+      <div class="subtabs" role="tablist" aria-label="أقسام تفريغ الفترات"><button type="button" class="active" data-subtab="availability-edit">تحرير التفريغ</button><button type="button" data-subtab="availability-summary">قائمة المفرغين</button></div>
+      <div id="availability-edit" class="subpanel active">
+      <div class="filters"><select id="availabilityTrainer"></select><select id="availabilityWeek"></select></div>
+      <div id="availabilityGrid" class="availabilityGrid"></div>
+      </div>
+      <div id="availability-summary" class="subpanel">
+      <h3>المدربون المفرغون وتفاصيل التفريغ</h3>
+      <div class="tableWrap"><table id="availabilitySummary"><thead><tr><th>المدرب</th><th>الرقم الوظيفي</th><th>تفاصيل التفريغ</th><th>تثبيت التفريغ</th></tr></thead><tbody></tbody></table></div>
+      </div>
+    </section>
+
+    <section id="page-rooms" class="page">
+      <div class="sectionHead"><div><h2>القاعات</h2><p>حدد القاعات المستخدمة في التوزيع؛ تُستبعد المعامل والمختبرات آليًا، ويمكن الإضافة والتعديل يدويًا.</p></div><button id="addRoomBtn">إضافة قاعة</button></div>
+      <div class="filters"><input id="roomSearch" type="search" placeholder="بحث باسم القاعة أو رمزها" aria-label="بحث القاعات"></div>
+      <div class="tableWrap"><table id="roomsTable"><thead><tr><th><label><input id="selectAllRooms" type="checkbox" title="تحديد كل القاعات للتوزيع"> الكل</label></th><th>اسم القاعة</th><th>الرمز الأصلي</th><th>السعة</th><th>المصدر</th><th></th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="page-periods" class="page">
+      <div class="sectionHead"><div><h2>الأيام والفترات</h2><p>يمكن تفعيل الأيام والفترات وإدخال الأوقات بصيغة 12 ساعة.</p></div></div>
+      <div class="grid two">
+        <article class="card"><h3>الفترات</h3><div id="periodEditor"></div></article>
+        <article class="card"><h3>الأسابيع والأيام</h3><label class="selectAll"><input id="selectAllDays" type="checkbox"> تحديد جميع الأسابيع والأيام</label><div id="dayEditor"></div></article>
+      </div>
+    </section>
+
+    <section id="page-schedule" class="page">
+      <div class="sectionHead"><div><h2>توزيع المراقبات والقاعات</h2><p>التثبيت يحفظ القاعة والمراقبين عند التوزيع الآلي. تفريغ المدرب يترك خانة مراقبته شاغرة إلى أن تُعالج.</p></div><div class="actions"><button id="addExamBtn">إضافة اختبار</button><button id="assignRoomsBtn">إسناد القاعات آليًا</button><button id="scheduleResetMonitorsBtn">إعادة تعيين المراقبين</button><button id="scheduleDistributeBtn" class="primary">توزيع آلي</button><button id="scheduleAuditBtn">فحص الجدول</button></div></div>
+      <div class="filters"><input id="scheduleSearch" placeholder="بحث بالمقرر أو الشعبة أو المدرب"><select id="scheduleDayFilter"><option value="">كل الأيام</option></select></div>
+      <div id="scheduleAuditPanel" class="card scheduleAuditPanel" hidden aria-live="polite"></div>
+      <div class="tableWrap wide"><table id="scheduleTable"><colgroup><col style="width:5%"><col style="width:8%"><col style="width:4%"><col style="width:7%"><col style="width:10%"><col style="width:5%"><col style="width:7%"><col style="width:8%"><col style="width:11%"><col style="width:10%"><col style="width:10%"><col style="width:3%"><col style="width:8%"><col style="width:4%"></colgroup><thead><tr><th>اليوم</th><th>التاريخ</th><th>الفترة</th><th>الوقت</th><th>المقرر</th><th>الشعبة</th><th>القسم</th><th>مدرب المقرر</th><th>القاعة</th><th>المراقب الأول</th><th>المراقب الثاني</th><th>تثبيت</th><th>ملاحظات</th><th></th></tr></thead><tbody></tbody></table></div>
+    </section>
+
+    <section id="page-reports" class="page">
+      <div class="sectionHead"><div><h2>التقارير والطباعة</h2><p>الطباعة تشمل المدربين النشطين الذين لديهم مراقبات فقط.</p></div></div>
+      <div class="subtabs" role="tablist" aria-label="أنواع التقارير"><button type="button" class="active" data-subtab="report-trainers">جداول المدربين</button><button type="button" data-subtab="report-monitoring">جدول المراقبة العام</button><button type="button" data-subtab="report-portal">بوابة المدربين</button></div>
+      <div id="report-trainers" class="subpanel active">
+      <div class="grid two">
+        <article class="card"><h3>جدول مدرب</h3><select id="reportTrainer"></select><div class="actions"><button id="printTrainerBtn">طباعة المحدد</button><button id="printAllBtn" class="primary">طباعة جميع الجداول</button></div></article>
+        <article class="card"><h3>ملخص التوزيع</h3><div id="trainerAverage" class="averageBox"></div><div id="trainerCounts"></div></article>
+      </div>
+      <div id="reportPreview" class="reportPreview"></div>
+      </div>
+      <div id="report-monitoring" class="subpanel">
+      <div class="grid two">
+        <article class="card"><h3>جدول المراقبة العام</h3><p>اليوم، التاريخ، الفترة، القاعة، المراقب الأول، المراقب الثاني والملاحظات.</p><button id="printMonitoringReportBtn" class="primary">طباعة جدول المراقبة / حفظ PDF</button></article>
+      </div>
+      <div id="monitoringReportPreview" class="tableWrap"></div>
+      </div>
+      <div id="report-portal" class="subpanel">
+      <div class="grid two">
+        <article class="card"><h3>بوابة المدربين عبر Google</h3><p>صدّر بيانات المراقبات، ثم استورد CSV في ورقة Google Sheets المسماة «مراقبات». تجد تعليمات النشر والسكريبت في المجلد المرفق.</p><button id="portalExportBtn">تصدير CSV للبوابة</button></article>
+      </div>
+      </div>
+    </section>
+
+    <section id="page-announcement" class="page">
+      <div class="sectionHead"><div><h2>إعلان جدول الاختبار للمتدربين</h2><p>جدول مستقل لكل يوم وتاريخ؛ راجع القاعات قبل نشر الإعلان.</p></div></div>
+      <div class="card announcementControls"><label for="announcementTerm">الفصل التدريبي <input id="announcementTerm" type="text" placeholder="مثال: الفصل الأول 1448" autocomplete="off"></label><button id="printAnnouncementBtn" class="primary">طباعة كل الأيام / حفظ PDF</button><label for="announcementDate">طباعة يوم محدد <select id="announcementDate"><option value="">اختر التاريخ</option></select></label><button id="printAnnouncementDayBtn">طباعة اليوم المحدد / حفظ PDF</button><span id="announcementInfo" class="info"></span></div>
+      <div class="card instructionsEditor"><label for="announcementInstructions">تعليمات الاختبار</label><p>اكتب التعليمات التي ترغب بإظهارها أسفل جدول كل يوم عند الطباعة.</p><textarea id="announcementInstructions" rows="6" placeholder="اكتب تعليمات الاختبار هنا…"></textarea></div>
+      <div id="announcementPreview" class="announcementPreview"></div>
+    </section>
+
+    <section id="page-audit" class="page">
+      <div class="sectionHead"><div><h2>التحقق والأخطاء</h2><p>فحص الشعب، القاعات، التعارضات، حدود المراقبة والتفريغ.</p></div><button id="runAuditBtn">إعادة الفحص</button></div>
+      <div id="auditSummary" class="grid metrics"></div>
+      <div class="filters"><label>نوع المشكلة <select id="auditCategory"><option value="">جميع الأنواع</option><option value="القاعات">القاعات</option><option value="المدربون">المدربون والمراقبون</option><option value="الشعب">الشعب والجدولة</option></select></label><label>المستوى <select id="auditLevel"><option value="">الكل</option><option value="خطأ">أخطاء</option><option value="تحذير">تحذيرات</option></select></label><label><input type="checkbox" id="showAuditExceptions"> إظهار الاستثناءات لإلغائها</label></div>
+      <div class="tableWrap"><table id="auditTable"><thead><tr><th>المستوى</th><th>النوع</th><th>التفاصيل</th><th>الإجراء</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+  </div>
+
+  <dialog id="editDialog"><form method="dialog"><h3 id="dialogTitle">تعديل</h3><div id="dialogFields"></div><div class="dialogActions"><button value="cancel">إلغاء</button><button id="dialogSave" value="default" class="primary">حفظ</button></div></form></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+  <script src="identity.js"></script>
+</body>
+</html>
